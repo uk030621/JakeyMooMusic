@@ -117,6 +117,9 @@ export default function Home() {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Jake&apos;s Music Centre Selection</h1>
+      <details style={{ textAlign: 'center', marginBottom: '10px' }}>
+              <summary style={{color:'black', cursor: 'pointer', fontSize: '1.2rem', fontFamily:'arial', fontSize:'0.7rem'}}>Jake ❤️</summary>
+                <div style={{ marginLeft: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Image className='uk-pic'
                         src="/jake.JPG" 
                         alt="Portfolio Image" 
@@ -125,7 +128,8 @@ export default function Home() {
                         priority={true}
                         style={{ marginLeft: '5px', marginRight:'5px', marginBottom:'15px', borderRadius:'10px', border: '3px solid black' }}  
                     />
-
+                </div>
+        </details>
 
       {displayedImageUrl && (
         <img
