@@ -123,7 +123,7 @@ export default function Home() {
                         width={200}  
                         height={250} 
                         priority={true}
-                        style={{ marginLeft: '5px', marginRight:'5px', marginBottom:'15px', borderRadius:'10px', border: '3px solid blue' }}  
+                        style={{ marginLeft: '5px', marginRight:'5px', marginBottom:'15px', borderRadius:'10px', border: '3px solid black' }}  
                     />
 
 
@@ -202,6 +202,7 @@ const styles = {
     marginBottom: '10px',
     border: '1px solid #ccc',
     borderRadius: '4px',
+    fontSize:'17px',
   },
   button: {
     padding: '10px 20px',
