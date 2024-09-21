@@ -9,6 +9,28 @@ export default function Home() {
   const [displayedImageUrl, setDisplayedImageUrl] = useState(''); // Store the currently displayed image
   const [storedUrls, setStoredUrls] = useState([]);
   const [error, setError] = useState('');
+  const [imageIndex, setImageIndex] = useState(0); // Start with the first image
+
+ // List of images for random selection
+ const imageUrls = [
+  '/jake.JPG', // Add more images to this array as needed
+  '/flying.jpg',
+  '/rugbyplayer.JPG',
+  '/jakeymoo.JPG'
+  ];
+
+  // Function to select the next image sequentially
+  const selectNextImage = () => {
+    setImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length); // Increment and wrap around
+  };
+
+  // Detect when the <details> is toggled (expanded)
+  const handleToggle = (event) => {
+    if (event.target.open) {
+      selectNextImage(); // Select the next sequential image when expanded
+    }
+  };
+
 
   const getContentType = (url) => {
     const extension = url.split('.').pop().toLowerCase();
@@ -117,19 +139,22 @@ export default function Home() {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Jake&apos;s Music Centre Selection</h1>
-      <details style={{ textAlign: 'center', marginBottom: '10px' }}>
-              <summary style={{color:'black', cursor: 'pointer', fontSize: '1.2rem', fontFamily:'arial', fontSize:'0.7rem'}}>Jake ❤️</summary>
-                <div style={{ marginLeft: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Image className='uk-pic'
-                        src="/jake.JPG" 
-                        alt="Portfolio Image" 
-                        width={200}  
-                        height={250} 
-                        priority={true}
-                        style={{ marginLeft: '5px', marginRight:'5px', marginBottom:'15px', borderRadius:'10px', border: '3px solid black' }}  
-                    />
-                </div>
-        </details>
+      <details onToggle={handleToggle} style={{ textAlign: 'center', marginBottom: '10px' }}>
+        <summary style={{ color: 'black', cursor: 'pointer', fontSize: '1.2rem', fontFamily: 'arial', fontSize: '0.7rem' }}>
+          Jake ❤️
+        </summary>
+        <div style={{ marginLeft: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Image
+            className='uk-pic'
+            src={imageUrls[imageIndex]} // Use the sequential image
+            alt="Portfolio Image"
+            width={200}
+            height={250}
+            priority={true}
+            style={{ marginLeft: '5px', marginRight: '5px', marginBottom: '15px', borderRadius: '10px', border: '3px solid black' }}
+          />
+        </div>
+      </details>
 
       {displayedImageUrl && (
         <img
